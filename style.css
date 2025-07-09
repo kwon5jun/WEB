@@ -1,0 +1,453 @@
+/* 전체 스타일 */
+body {
+    font-family: sans-serif; /* 기본 글꼴 설정 */
+    margin: 0; /* 기본 마진 제거 */
+    padding: 0; /* 기본 패딩 제거 */
+    background-color: #f4f4f4; /* 기본 배경색 */
+    color: #333; /* 기본 글자색 */
+    line-height: 1.6; /* 줄 간격 설정 */
+}
+
+.container {
+    max-width: 960px; /* 최대 너비 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 20px; /* 내부 여백 */
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: #333; /* 헤더 배경색 */
+    color: #fff; /* 헤더 글자색 */
+    padding: 1em 0; /* 상하 패딩 */
+    text-align: center; /* 가운데 정렬 */
+}
+
+header h1 {
+    margin: 0; /* 제목 마진 제거 */
+    padding-bottom: 10px; /* 제목 아래 패딩 */
+}
+
+
+/* 네비게이션 스타일 */
+nav ul {
+    list-style: none; /* 목록 스타일 제거 */
+    padding: 0; /* 패딩 제거 */
+    margin: 0; /* 마진 제거 */
+    display: flex; /* flex 레이아웃 사용 */
+    justify-content: center; /* 가운데 정렬 */
+}
+
+nav ul li {
+    margin: 0 15px; /* 각 메뉴 항목 간 간격 */
+}
+
+nav a {
+    color: #fff; /* 링크 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+    padding: 5px 10px; /* 링크 내부 여백 */
+    border-radius: 5px; /* 둥근 테두리 */
+}
+
+nav a:hover {
+    background-color: #555; /* 호버 시 배경색 변경 */
+}
+
+/* 메인 콘텐츠 스타일 */
+main {
+    padding: 20px; /* 메인 콘텐츠 내부 여백 */
+}
+
+main section {
+    background-color: #fff; /* 섹션 배경색 */
+    padding: 20px; /* 섹션 내부 여백 */
+    margin-bottom: 20px; /* 섹션 아래 마진 */
+    border-radius: 8px; /* 둥근 테두리 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+main h2 {
+    color: #333; /* 제목 색상 */
+    margin-top: 0; /* 제목 상단 마진 제거 */
+    border-bottom: 2px solid #eee; /* 제목 아래 테두리 */
+    padding-bottom: 10px; /* 제목 아래 패딩 */
+    margin-bottom: 15px; /* 제목 아래 마진 */
+}
+
+/* 푸터 스타일 */
+footer {
+    background-color: #333; /* 푸터 배경색 */
+    color: #fff; /* 푸터 글자색 */
+    text-align: center; /* 가운데 정렬 */
+    padding: 1em 0; /* 상하 패딩 */
+    position: sticky; /* 푸터를 바닥에 고정 (선택 사항) */
+    bottom: 0; /* 푸터를 바닥에 고정 (선택 사항) */
+    width: 100%; /* 푸터 너비 100% */
+}
+
+/* 로그인 폼 스타일 */
+login-button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    width: 350px; /* 적절한 너비 설정 */
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.login-form .form-group {
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+}
+
+.login-form input[type="text"],
+.login-form input[type="email"],
+.login-form input[type="number"],
+.login-form input[type="password"] {
+    width: calc(100% - 22px); /* 패딩과 보더를 고려한 너비 */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* 패딩과 보더를 너비에 포함 */
+    font-size: 16px;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="email"]:focus,
+.login-form input[type="number"]:focus,
+.login-form input[type="password"]:focus {
+    outline: none;
+    border-color: #007bff; /* 포커스 시 테두리 색상 변경 */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 포커스 시 그림자 효과 */
+}
+
+.login-form .login-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s ease; /* 부드러운 배경색 변화 */
+}
+
+.login-form .login-button:hover {
+    background-color: #0056b3;
+}
+
+.login-form .options {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between; /* 아이템 간 간격 벌리기 */
+    align-items: center; /* 수직 가운데 정렬 */
+    font-size: 14px;
+    color: #777;
+}
+
+.login-form .options label {
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+.login-form .options a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-form .options a:hover {
+    text-decoration: underline;
+}
+
+.login-form a.signup-button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.login-form a.signup-button:hover {
+    background-color: #218838;
+}
+
+/* 게시판 섹션 스타일 */
+.board-section {
+    background-color: #fff; /* 섹션 배경색 */
+    padding: 20px; /* 섹션 내부 여백 */
+    margin-bottom: 20px; /* 섹션 아래 마진 */
+    border-radius: 8px; /* 둥근 테두리 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+.board-section h2 {
+    color: #333; /* 제목 색상 */
+    margin-top: 0; /* 제목 상단 마진 제거 */
+    border-bottom: 2px solid #eee; /* 제목 아래 테두리 */
+    padding-bottom: 10px; /* 제목 아래 패딩 */
+    margin-bottom: 15px; /* 제목 아래 마진 */
+}
+
+/* 게시판 테이블 스타일 */
+.board-table {
+    width: 100%; /* 테이블 전체 너비 사용 */
+    border-collapse: collapse; /* 셀 경계선 합치기 */
+    margin-bottom: 10px; /* 테이블 아래 마진 */
+}
+
+.board-table th,
+.board-table td {
+    padding: 12px; /* 셀 내부 여백 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    border-bottom: 1px solid #eee; /* 셀 아래 테두리 */
+}
+
+.board-table th {
+    background-color: #f8f8f8; /* 헤더 배경색 */
+    font-weight: bold; /* 헤더 글자 두껍게 */
+    color: #333; /* 헤더 글자색 */
+}
+
+.board-table tbody tr:last-child td {
+    border-bottom: none; /* 마지막 행 아래 테두리 제거 */
+}
+
+.board-table .post-title a {
+    color: #333; /* 제목 링크 색상 */
+    text-decoration: none; /* 제목 링크 밑줄 제거 */
+}
+
+.board-table .post-title a:hover {
+    text-decoration: underline; /* 호버 시 밑줄 표시 */
+}
+
+.board-table .center-align {
+    text-align: center; /* 가운데 정렬 */
+}
+
+/* 버튼 폼 스타일 */
+.button-container {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.button-container:hover {
+    background-color: #0056b3;
+}
+
+.button_del-container {
+    background-color: #ff0000;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.button_del-container:hover {
+    background-color: #b30000;
+}
+
+.text-right {
+    display: block;
+    text-align: right;
+}
+
+.post-content{
+    background-color: #ffffffbd; /* 게시글 배경색 */
+    margin-bottom: 10px; /* 게시글 아래 마진 */
+    border-radius: 8px; /* 둥근 테두리 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+/* 전체 폼 컨테이너 스타일 */
+.board-form {
+  /* max-width: 800px; /*폼의 최대 너비 */
+  margin: 10px auto; /* 중앙 정렬 및 위아래 여백 */
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* 각 입력 필드 그룹 스타일 */
+.form-group {
+  margin-bottom: 20px; /* 각 그룹 하단 여백 */
+}
+
+.form-group label {
+  display: block; /* 레이블을 블록 레벨 요소로 만들어 다음 요소를 아래로 내림 */
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+  font-size: 1.1em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group textarea {
+  width: calc(100% - 20px); /* 패딩을 고려한 너비 조정 */
+  padding: 12px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  box-sizing: border-box; /* 패딩과 보더가 너비에 포함되도록 */
+  transition: border-color 0.3s ease; /* 호버/포커스 시 부드러운 전환 */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #007bff; /* 포커스 시 테두리 색상 변경 */
+  outline: none; /* 기본 아웃라인 제거 */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3); /* 포커스 시 그림자 효과 */
+}
+
+/* 내용 부분 (`textarea`)에만 적용될 스타일 */
+.form-content textarea {
+  resize: vertical; /* 세로 방향으로만 크기 조절 가능 */
+  min-height: 150px; /* 최소 높이 설정 */
+}
+
+/* 버튼 스타일 */
+.submit-button,
+.cancel-button {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-right: 10px; /* 버튼 사이 간격 */
+}
+
+.submit-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px); /* 약간 위로 올라오는 효과 */
+}
+
+.cancel-button {
+  background-color: #6c757d;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+.pagination {
+    display: flex; /* flex 레이아웃 사용 */
+    justify-content: center; /* 가운데 정렬 */
+    margin: 20px 0; /* 위아래 마진 */
+}
+.pagination a {
+    margin: 0 5px; /* 각 페이지 링크 간 간격 */
+    padding: 8px 12px; /* 링크 내부 여백 */
+    background-color: #00ff00; /* 기본 배경색 */
+    color: white; /* 글자색 */
+    text-decoration: none; /* 밑줄 제거 */
+    border-radius: 4px; /* 둥근 테두리 */
+}
+.pagination a:hover {
+    background-color: #07c700; /* 호버 시 배경색 변경 */
+}
+.pagination .active {
+    background-color: #0056b3; /* 현재 페이지 배경색 */
+    pointer-events: none; /* 클릭 방지 */
+}
+.pagination .disabled {
+    background-color: #ccc; /* 비활성화된 페이지 배경색 */
+    pointer-events: none; /* 클릭 방지 */
+    color: #666; /* 글자색 */
+}
+
+.search-form {
+    display: flex; /* flex 레이아웃 사용 */
+    justify-content: center; /* 가운데 정렬 */
+    margin-bottom: 20px; /* 아래 마진 */
+}
+.search-form input[type="text"] {
+    width: 300px; /* 검색 입력 필드 너비 */
+    padding: 10px; /* 내부 여백 */
+    border: 1px solid #ddd; /* 테두리 */
+    border-radius: 4px; /* 둥근 테두리 */
+    font-size: 16px; /* 글자 크기 */
+}
+.search-form button {
+    padding: 10px 15px; /* 버튼 내부 여백 */
+    background-color: #007bff; /* 버튼 배경색 */
+    color: white; /* 버튼 글자색 */
+    border: none; /* 테두리 제거 */
+    border-radius: 4px; /* 둥근 테두리 */
+    cursor: pointer; /* 커서 모양 변경 */
+    font-size: 16px; /* 글자 크기 */
+}
+
+/* 게시글 내용 표시 전용 스타일 */
+.content-view {
+    /*white-space: pre-line;               /* 줄바꿈 유지 */
+    padding: 15px;                       /* 내부 여백 */
+    background-color: #fafafa;           /* 연한 회색 배경 */
+    border: 1px solid #ddd;              /* 얇은 테두리 */
+    border-radius: 4px;                  /* 둥근 모서리 */
+    min-height: 150px;                   /* 최소 높이 */
+    font-size: 16px;                     /* 읽기 편한 크기 */
+    line-height: 1.6;                    /* 줄 간격 */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* 안쪽 그림자 */
+    color: #333;
+}
+
+/* readonly input 스타일 통일화 */
+input[readonly] {
+    background-color: #f5f5f5;           /* 회색 배경 */
+    color: #555;                         /* 글자색 */
+    cursor: default;
+    border: 1px solid #ccc;
+}
