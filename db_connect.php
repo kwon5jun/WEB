@@ -5,6 +5,10 @@ $password = ""; // MySQL 비밀번호
 $dbname = ""; // 데이터베이스 이름
 $port = 3306; // MySQL 포트 번호 (기본값)
 
+// db_information.php 파일을 포함하여 데이터베이스 연결 설정
+// 위 변수에서 설정시 주석처리하여 제거
+require_once '../db_information.php';
+
 
 // MySQL 연결 생성
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
