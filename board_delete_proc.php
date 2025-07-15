@@ -25,6 +25,7 @@ if (isset($_GET['idx'])) {
         echo "<script>javascript:history.back();</script>";
         exit();
     }
+    unlink("./files/{$data['author']}/{$data['file']}");
     // 데이터베이스에 게시글 삭제
     $query = "DELETE FROM board WHERE idx='$idx'";
     if (mysqli_query($conn, $query)) {

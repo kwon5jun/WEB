@@ -17,6 +17,25 @@ if (!isset($userid) || empty($userid)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript">
+
+		function checkFileExtension(fileName) {
+			
+  			var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp|txt)$/;
+			var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+			if(fileName==""){return true;}
+			if(!allowedExtensions.exec(fileName)) {
+  				alert('업로드할 수 없는 확장자의 파일입니다.');
+  				writeFrm.upload_file.value = '';
+  				return false;
+			}else{
+				return true;
+		}
+			 
+			return true;
+		}
+    </script>
 </head>
 <body>
     <?php include 'header.php'; ?>
@@ -25,7 +44,7 @@ if (!isset($userid) || empty($userid)) {
             <section class="board-section">
                 <h2>자유 게시판 (쓰기)</h2> 
                 <!-- 글쓰기 폼 -->
-                <form class="board-form" method="post" action="board_write_proc.php">
+                <form class="board-form" method="post" action="board_write_proc.php" enctype="multipart/form-data" onsubmit="return checkFileExtension(writeFrm.upload_file.value)">
                     <div class="form-group">
                         <label for="author">작성자</label>
                         <input type="text" id="author" name="author" value="<?=$userid?>" readonly>
@@ -38,7 +57,7 @@ if (!isset($userid) || empty($userid)) {
                         <label for="content">내용</label>
                         <textarea id="content" name="content" rows="10" required></textarea>
                     </div>
-
+                <input class = "upload" name = "upload_file" type = "file" accept = "image/png, image/jpeg"/>
                 <h2></h2>
                 <!-- 뒤로가기 버튼 -->
                 <div>

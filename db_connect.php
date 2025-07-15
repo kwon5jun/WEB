@@ -35,6 +35,7 @@ if ($conn->connect_error) {
 //   `title` varchar(500) COLLATE utf8_general_ci NOT NULL,
 //   `content` varchar(5000) COLLATE utf8_general_ci NOT NULL,
 //   `author` varchar(500) COLLATE utf8_general_ci NOT NULL,
+//   `file` varchar(500) COLLATE utf8_general_ci DEFAULT NULL,
 //   `date` datetime DEFAULT NULL,
 //   PRIMARY KEY (`idx`)
 // ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

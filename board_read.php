@@ -42,6 +42,7 @@ require_once 'get_jwt.php';
                             <!-- <?= nl2br(htmlspecialchars($data['content'])) ?> -->
                         </div>
                     </div>
+                    <a href="./files/<?=$data['author']?>/<?=$data['file']?>" download = "<?=$data['file']?>">Download</a>
 
                 <h2></h2>
                 <!-- 뒤로가기 버튼 -->
