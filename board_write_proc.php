@@ -38,11 +38,14 @@
         $title = $_POST['title'];
         $author = $_POST['author'];
         $content = $_POST['content'];
-        echo $_FILES['upload_file']['name'];
+        
+        // 파일 업로드 처리
+        //echo $_FILES['upload_file']['name'];
         if($_FILES['upload_file'] != NULL){
             $tmp_name = $_FILES['upload_file']['tmp_name'];
             $name = $_FILES['upload_file']['name'];
             $path = "./files/$author";
+            $mime_res = mime_content_type($tmp_name);
             if(fileCheck($name, $mime_res) === false){
                 echo "<script>alert('업로드 될 수 없는 파일이 탐지되었습니다. " . $name ."');</script>";
                 $name = "NULL";
@@ -54,7 +57,7 @@
                 $up = move_uploaded_file($tmp_name, "$path/$name");
             }
             
-            } else {
+        } else {
             $name = "NULL";
         }
 

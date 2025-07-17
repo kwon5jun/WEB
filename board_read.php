@@ -42,7 +42,14 @@ require_once 'get_jwt.php';
                             <!-- <?= nl2br(htmlspecialchars($data['content'])) ?> -->
                         </div>
                     </div>
-                    <a href="./files/<?=$data['author']?>/<?=$data['file']?>" download = "<?=$data['file']?>">Download</a>
+                    <?php
+                        if (!empty($data['file'])) {
+                            echo "<div class='form-group'>";
+                            echo "<label for='file'>첨부파일</label>";
+                            echo "<a href='download.php?filePath=/{$data['author']}/{$data['file']}' download='{$data['file']}'>{$data['file']}</a>";
+                            echo "</div>";
+                        }
+                    ?>
 
                 <h2></h2>
                 <!-- 뒤로가기 버튼 -->
