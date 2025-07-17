@@ -1,7 +1,7 @@
 <!-- 메인 페이지 -->
 <!DOCTYPE html>
 <?php
-require_once 'db_connect.php'; //세션 유지장치 필요
+require_once 'db_connect.php';
 ?>
 <html lang="ko">
 <head>
