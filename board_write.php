@@ -21,7 +21,6 @@ if (!isset($userid) || empty($userid)) {
 
 		function checkFileExtension(fileName) {
 			
-  			var reg = /(.*?)\.(jpg|jpeg|png|gif|bmp|txt)$/;
 			var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
 
 			if(fileName==""){return true;}
