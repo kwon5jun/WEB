@@ -38,8 +38,8 @@ require_once 'get_jwt.php';
                     <div class="form-group">
                         <label for="content">내용</label>
                         <div id="content" class="content-view">
-                            <?= nl2br($data['content']) ?>
-                            <!-- <?= nl2br(htmlspecialchars($data['content'])) ?> -->
+                            <!-- <?= nl2br($data['content']) ?> -->
+                            <?= nl2br(htmlspecialchars($data['content'])) ?>
                         </div>
                     </div>
                     <?php

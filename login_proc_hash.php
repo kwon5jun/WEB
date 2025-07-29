@@ -9,7 +9,7 @@
     $password = $_POST['password'];
     //echo $id . " / " . $password . "<br>";
 
-// /***** 아이디와 비밀번호를 동시에 확인 직접 해시값 제작으로 로그인 *****
+ /***** 아이디와 비밀번호를 동시에 확인 직접 해시값 제작으로 로그인 *****
     $encrypted_passwd  = hash('sha256',$password); // sha256 해시화
     $sql = "SELECT * FROM access WHERE name='$id' and password='$encrypted_passwd'";
     $result = mysqli_query($conn, $sql);
@@ -33,12 +33,20 @@
         echo '<script>document.getElementById("returnForm").submit();</script>';
         exit();
     }
-// ***** 아이디와 비밀번호를 동시에 확인 *****/
+ ***** 아이디와 비밀번호를 동시에 확인 *****/
 
 
- /*****아이디와 비밀번호 각각확인 *****
-    $sql = "SELECT password FROM access WHERE name='$id'";
-    $result = mysqli_query($conn, $sql);
+// /*****아이디와 비밀번호 각각확인 *****
+    //$sql = "SELECT password FROM access WHERE name='$id'";
+    // injection 방지: mysqli_prepare 사용
+    $stmt = mysqli_prepare($conn, "SELECT password FROM access WHERE name = ?");
+    if (!$stmt) {
+        echo '<script>window.history.back();</script>'; // 이전 페이지로 돌아가기
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, 's', $id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
     $row = mysqli_fetch_array($result);
     //var_dump($row); // 디버깅용 코드
 
@@ -46,8 +54,12 @@
         // 비밀번호 확인
         if (password_verify($password, $row['password'])) {
             //echo "성공";
-            $_SESSION['loggedin'] = true; // 로그인 상태를 나타내는 변수
-            $_SESSION['username'] = $id; // 사용자 아이디 저장 (선택 사항)
+            $data = array(
+                'id' => $id,
+                'exp' => time() + (600), // 토큰 만료 시간 (10분)
+            );
+            $jwt = JWT::encode($data, $secret_key,'HS256');
+            setcookie('jwt', $jwt, time() + (3600), "/"); // 쿠키에 JWT 저장 (30일 유효기간 : 86400 * 30) 
             header('Location: index.php'); // 로그인 성공 시 index.php로 리다이렉트
             exit();
         } else {
@@ -66,7 +78,7 @@
         echo '<script>document.getElementById("returnForm").submit();</script>';
         exit();
     }
- *****아이디와 비밀번호 각각확인 *****/
+ // *****아이디와 비밀번호 각각확인 *****/
 
 
     mysqli_close($conn);

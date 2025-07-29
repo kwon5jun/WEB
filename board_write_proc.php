@@ -65,6 +65,10 @@
         $title = mysqli_real_escape_string($conn, $title);
         $author = mysqli_real_escape_string($conn, $author);
         $content = mysqli_real_escape_string($conn, $content);
+        $name = mysqli_real_escape_string($conn, $name);
+        //xss 방지
+        $title = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
+        $content = htmlspecialchars($content, ENT_QUOTES, 'UTF-8');
 
         // 데이터베이스에 게시글 저장
         $query = "INSERT INTO board (title, author, content, file, date) VALUES ('$title', '$author', '$content', '$name', NOW())";

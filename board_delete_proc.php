@@ -11,8 +11,16 @@ if (isset($_GET['idx'])) {
     $idx = $_GET['idx'];
 
     // 게시글 정보 가져오기
-    $query = "SELECT * FROM board WHERE idx='$idx'";
-    $result = mysqli_query($conn, $query);
+    //$query = "SELECT * FROM board WHERE idx='$idx'";
+    // injection 방지: mysqli_prepare 사용
+    $stmt = mysqli_prepare($conn, "SELECT * FROM board WHERE idx = ?");
+    if (!$stmt) {
+        echo '<script>window.history.back();</script>'; // 이전 페이지로 돌아가기
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, 'i', $idx);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
     $data = mysqli_fetch_array($result);
     if (!$data) {
         echo "<script>alert('게시글을 찾을 수 없습니다.');</script>";

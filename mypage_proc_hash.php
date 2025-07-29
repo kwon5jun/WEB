@@ -32,8 +32,17 @@
     //$encrypted_passwd  = password_hash($password, PASSWORD_DEFAULT); // password_hash를 사용한 비밀번호 해시화
     $encrypted_passwd  = hash('sha256',$password); // sha256 해시화
 
-    $sql = "UPDATE access SET useremail='$email', password='$encrypted_passwd', score='$score' WHERE name='$id'";
-    if (mysqli_query($conn, $sql)) {
+    // injection 방지: mysqli_prepare 사용 "UPDATE access SET useremail='$email', password='$encrypted_passwd', score='$score' WHERE name='$id'"
+    $stmt = mysqli_prepare($conn, "UPDATE access SET useremail = ?, password = ?, score = ? WHERE name = ?");
+    if (!$stmt) {
+        echo '<script>alert("SQL 준비에 실패했습니다. 다시 시도해주세요.");</script>';
+        echo '<script>window.history.back();</script>'; // 이전 페이지로 돌아가기
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, 'ssis', $email, $encrypted_passwd, $score, $id);
+    mysqli_stmt_execute($stmt);
+    // 쿼리 실행 후 성공 여부 확인
+    if ($stmt->affected_rows > 0) {
         echo '<script>alert("회원정보가 업데이트되었습니다.");</script>';
         echo '<script>window.location.href = "mypage.php";</script>'; // 마이페이지로 리다이렉트
     } else {
