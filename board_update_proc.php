@@ -42,6 +42,9 @@
         $author = mysqli_real_escape_string($conn, $author);
         $content = mysqli_real_escape_string($conn, $content);
         $idx = mysqli_real_escape_string($conn, $idx);
+        //xss 방지
+        $title = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
+        $content = htmlspecialchars($content, ENT_QUOTES, 'UTF-8');
 
         // 데이터베이스에 게시글 수정
         $query = "UPDATE board SET title='$title', author='$author', content='$content' WHERE idx='$idx'";
