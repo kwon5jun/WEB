@@ -26,7 +26,7 @@ if (!isset($userid) || empty($userid)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지</title>
+    <title>비밀번호 변경</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -34,32 +34,28 @@ if (!isset($userid) || empty($userid)) {
     <main>
         <div class="container">
             <section>
-                <h2>마이페이지</h2>
-                <!-- <form id="mypageForm" class="login-form" method="post" action="./mypage_proc.php" onsubmit="return validateForm(event)"> -->
-                <form id="mypageForm" class="login-form" method="post" action="./mypage_proc_hash.php" onsubmit="return validateForm(event)">
+                <h2>마이페이지 - 비밀번호 변경</h2>
+                <form id="mypageForm" class="login-form" method="post" action="./passwd_proc.php" onsubmit="return validateForm(event)">
                     <div class="form-group">
-                        <label for="username">아이디</label>
-                        <input type="text" id="username" name="username" readonly value="<?php echo $userid; ?>" required>
+                        <label for="password_old">현재 비밀번호</label>
+                        <input type="password" id="password_old" name="password_old" required>
                         <br>
-                        <span id="usernameError" style="color: red;"></span>
+                        <span id="passwordError" style="color: red;"></span>
                     </div>
                     <div class="form-group">
-                        <label for="email">이메일</label>
-                        <input type="email" id="email" name="email" value="<?php echo $email; ?>" required>
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password" name="password" required>
                         <br>
-                        <span id="emailError" style="color: red;"></span>
+                        <span id="passwordError" style="color: red;"></span>
                     </div>
                     <div class="form-group">
-                        <label for="score">점수</label>
-                        <input type="number" id="score" name="score" value="<?php echo $score; ?>" required>
+                        <label for="password_check">비밀번호 확인</label>
+                        <input type="password" id="password_check" name="password_check" required>
                         <br>
-                        <span id="scoreError" style="color: red;"></span>
+                        <span id="passwordMatchError" style="color: red;"></span>
                     </div>
                     <button type="submit" class="login-button" name="mypage">수정하기</button>
-                    <h2></h2>
-                    <a class="button-container" href="passwd.php" >비밀번호 변경</a>
                 </form>
-                
                 <h2></h2>
             </section>
         </dic>
@@ -70,8 +66,8 @@ if (!isset($userid) || empty($userid)) {
 
             let isValid = true;
 
-            isValid = validateEmail() && isValid;
-            isValid = validateScore() && isValid;
+            isValid = validatePassword() && isValid;
+            isValid = checkPasswordMatch() && isValid;
 
             if (isValid) {
                 // 검증이 통과되면 폼을 제출합니다.
@@ -106,34 +102,6 @@ if (!isset($userid) || empty($userid)) {
 
             if (password !== passwordCheck) {
                 errorSpan.textContent = '비밀번호가 일치하지 않습니다.';
-                return false;
-            } else {
-                errorSpan.textContent = '';
-                return true;
-            }
-        }
-
-        function validateEmail() {
-            const emailInput = document.getElementById('email');
-            const errorSpan = document.getElementById('emailError');
-
-            if (emailInput.length < 1) {
-                errorSpan.textContent = '이메일 주소를 입력하세요.';
-                return false;
-            } else {
-                errorSpan.textContent = '';
-                return true;
-            }
-        }
-
-        function validateScore() {
-            const scoreInput = document.getElementById('score');
-            const errorSpan = document.getElementById('scoreError');
-            console.log("scoreInput", scoreInput.value);
-            console.log("scoreInput type", typeof scoreInput.value);
-
-            if (scoreInput.value > 100 || scoreInput.value < 1) {
-                errorSpan.textContent = '점수를 입력하세요.';
                 return false;
             } else {
                 errorSpan.textContent = '';
