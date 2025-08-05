@@ -22,6 +22,8 @@
             <div class="form-group">
                 <label for="password">비밀번호</label>
                 <input type="password" id="password" name="password" required>
+                <br>
+                <span id="passwordError" style="color: red;"></span>
             </div>
             <div class="form-group">
                 <label for="password_check">비밀번호 확인</label>
@@ -42,15 +44,32 @@
 
             let isValid = true;
 
-            if (checkPasswordMatch()) {
+            isValid = validatePassword() && isValid;
+            isValid = checkPasswordMatch() && isValid;
+
+            if (isValid) {
                 // 검증이 통과되면 폼을 제출합니다.
                 //alert("제출");
-                console.log("signupForm element:", document.getElementById('signupForm'));
-                console.log("Type of signupForm:", typeof document.getElementById('signupForm'));
+                //console.log("mypageForm element:", document.getElementById('mypageForm'));
+                //console.log("Type of mypageForm:", typeof document.getElementById('mypageForm'));
                 document.getElementById('signupForm').submit();
             } else {
                 // 검증 실패 시에는 오류 메시지가 표시되므로 폼을 제출하지 않습니다.
-                alert("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
+                alert("입력정보를 다시 확인해주세요.");
+            }
+        }
+
+        function validatePassword() {
+            const passwordInput = document.getElementById('password');
+            const errorSpan = document.getElementById('passwordError');
+            const password = passwordInput.value;
+
+            if (password.length < 8) {
+                errorSpan.textContent = '비밀번호는 8글자 이상이어야 합니다.';
+                return false;
+            } else {
+                errorSpan.textContent = '';
+                return true;
             }
         }
 

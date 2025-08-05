@@ -1,13 +1,29 @@
 <!-- 회원가입 처리 -->
 <?php
     require_once 'db_connect.php';
+
     $id = $_POST['username'];
     $password = $_POST['password'];
     $password_check = $_POST['password_check'];
 
+    if (!isset($password) || empty($password) || !isset($password_check) || empty($password_check)) {
+        // 비밀번호가 비어있는 경우
+        echo '<script>alert("비밀번호를 입력해주세요.");</script>';
+        echo '<script>window.history.back();</script>'; // 이전 페이지로 돌아가기
+        exit();
+    }
+
     if ($password !== $password_check) {
         // 비밀번호가 일치하지 않을 경우
         echo '<script>alert("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");</script>';
+        echo '<script>window.history.back();</script>'; // 이전 페이지로 돌아가기
+        exit();
+    }
+
+    // 비밀번호 자릿수 검증
+    if (strlen($password) < 8) {
+        // 비밀번호가 8글자 미만인 경우
+        echo '<script>alert("비밀번호는 8글자 이상이어야 합니다.");</script>';
         echo '<script>window.history.back();</script>'; // 이전 페이지로 돌아가기
         exit();
     }
@@ -19,7 +35,7 @@
         echo '<script>window.history.back();</script>'; // 이전 페이지로 돌아가기
         exit();
     }
-    mysqli_stmt_bind_param($stmt, 's', $id);
+    mysqli_stmt_bind_param($stmt, 's', $userid);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     $row = mysqli_fetch_array($result);
