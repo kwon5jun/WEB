@@ -22,8 +22,10 @@ require_once 'get_jwt.php';
                 <!-- 게시글 검색 -->
                 <form class="search-form" method="get" action="search.php">
                     <?php
+                    $search = !empty($_GET['search']) ? $_GET['search'] : null;
+                    $search = htmlspecialchars($search, ENT_QUOTES, 'UTF-8'); // XSS 방지
                     if (isset($_GET['search'])) {
-                        echo "<input type='text' name='search' value='" . htmlspecialchars($_GET['search']) . "' placeholder='검색어를 입력하세요. ' required>";
+                        echo "<input type='text' name='search' value='" . $search . "' placeholder='검색어를 입력하세요. ' required>";
                     } else {
                         echo "<input type='text' name='search' placeholder='검색어를 입력하세요.' required>";
                     }
@@ -45,9 +47,9 @@ require_once 'get_jwt.php';
                         <?php
                         // 페이지네이션 설정
                         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-                        $search = !empty($_GET['search']) ? $_GET['search'] : null;
+                        
                         //echo "<script>console.log('search: $search');</script>";
-                        if ($page < 1) {
+                        if ($page < 1 || !is_numeric($page)) {
                             $page = 1; // 페이지 번호가 1보다 작으면 1로 설정
                         }
                         $limit = 5; // 한 페이지에 표시할 게시글 수
